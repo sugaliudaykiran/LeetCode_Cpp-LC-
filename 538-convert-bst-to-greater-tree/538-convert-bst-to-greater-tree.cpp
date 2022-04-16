@@ -13,8 +13,8 @@ class Solution {
 public:
     int sum = 0;
     
-    TreeNode* convertBST(TreeNode* root) {
-        if (root) {
+    TreeNode* convertBST(TreeNode* root) {          //  TC -> O(n).. AS -> O(n)..
+        if (root) {                             
             convertBST(root->right);
             root->val += sum;       //  Reverse of In-order Traversal which is (right, root, left).. and update the sum with the val..
             sum = root->val;
