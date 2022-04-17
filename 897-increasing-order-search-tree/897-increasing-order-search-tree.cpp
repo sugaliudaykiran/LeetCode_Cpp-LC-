@@ -11,6 +11,34 @@
  */
 class Solution {
 public:
+    TreeNode *cur = NULL;
+    TreeNode* increasingBST(TreeNode* root) {
+        if (root == NULL){
+            return NULL;
+        }
+        
+        TreeNode *res = new TreeNode(0);
+        cur = res;
+        inorder(root);
+        return res -> right;
+    }
+    
+    void inorder(TreeNode* node){
+        if (node == NULL){
+            return;
+        }
+        
+        inorder(node -> left);
+        node -> left = NULL;
+        cur -> right = node;
+        cur = node;
+        inorder(node -> right);
+    }
+};
+
+/*      Navie Solution :- Using vector to store the items and makes the right skewed tree.
+            TC -> O(n).. AS -> O(n).. where n is no of nodes in the tree..
+        
     vector <TreeNode *> res;
     TreeNode* increasingBST(TreeNode* root) {
         if (root == NULL){
@@ -35,9 +63,4 @@ public:
         res.push_back(node);
         inorder(node -> right);
     }
-};
-
-/*      Navie Solution :- Using vector to store the items and makes the right skewed tree.
-            TC -> O(n).. AS -> O(n).. where n is no of nodes in the tree..
-        
 */
