@@ -12,7 +12,7 @@
 class Solution {
 public:
     TreeNode *cur = NULL;
-    TreeNode* increasingBST(TreeNode* root) {
+    TreeNode* increasingBST(TreeNode* root) {   //  TC -> O(n).. AS -> O(h)..
         if (root == NULL){
             return NULL;
         }
