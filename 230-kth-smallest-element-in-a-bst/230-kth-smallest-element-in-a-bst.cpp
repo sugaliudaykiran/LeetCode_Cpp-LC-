@@ -12,12 +12,11 @@
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {
-        vector <int> res = getInorder(root);
-        return res[k-1];
+        return getInorder(root, k);
     }
     
     private:
-    vector <int> getInorder(TreeNode* root){
+    int getInorder(TreeNode* root, int k){
         vector<int> inorder;
         
         TreeNode *cur = root;
@@ -42,6 +41,6 @@ public:
                 }
             }
         }
-        return inorder;
+        return inorder[k-1];
     }
 };
