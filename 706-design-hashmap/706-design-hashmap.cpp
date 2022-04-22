@@ -6,19 +6,19 @@ public:
     MyHashMap() {
         size = 10e6 +1;
         v.resize(size);
-        fill(v.begin(), v.end(), -1);
+        // fill(v.begin(), v.end(), -1);
     }
     
     void put(int key, int value) {
-        v[key] = value;   
+        v[key] = value+1;   
     }
     
     int get(int key) {
-        return v[key];
+        return v[key]-1;
     }
     
     void remove(int key) {
-        v[key] = -1;
+        v[key] = 0;
     }
 };
 
