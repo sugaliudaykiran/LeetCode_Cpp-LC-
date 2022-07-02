@@ -1,20 +1,28 @@
 class Solution {
 public:
-    int maxArea(int h, int w, vector<int>& hC, vector<int>& vC) {   
+    int maxArea(int h, int w, vector<int>& hC, vector<int>& vC) {
+        
         hC.push_back(h);
+        vC.push_back(w);
+        
         sort(hC.begin(), hC.end());
-		int maxh = hC[0];
-        for(int i=1; i<hC.size(); i++){
-            maxh = max(maxh, hC[i] - hC[i-1]);
+        sort(vC.begin(), vC.end());
+        
+        int hMax = hC[0];
+        for (int i=1; i<hC.size(); i++)
+        {
+            int cur_hc = hC[i] - hC[i-1];
+            hMax = max(hMax, cur_hc);
         }
         
-        vC.push_back(w);
-        sort(vC.begin(), vC.end());
-		int maxv = vC[0];
-        for(int i=1; i<vC.size(); i++){
-            maxv = max(maxv, vC[i] - vC[i-1]);
+        int vMax = vC[0];
+        for (int i=1; i<vC.size(); i++)
+        {
+            int cur_vc = vC[i] - vC[i-1];
+            vMax = max(vMax, cur_vc);
         }
-		
-        return (1LL*maxh*maxv) % 1000000007; //1LL used to make the product long long or integer sign overflow will occur.
+        
+        long int res = 1LL * vMax * hMax;
+        return res % int(1e9 + 7);
     }
 };
