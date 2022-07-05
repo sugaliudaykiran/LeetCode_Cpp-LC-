@@ -1,22 +1,16 @@
-class Solution
-{
-    public:
-        bool containsDuplicate(vector<int> &nums) {
-            unordered_map <int, int> mp;
-            
-            for (int i=0; i<nums.size(); i++)
-            {
-                mp[nums[i]]++;
-            }
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
         
-            for (int i=0; i<nums.size(); i++)
+        sort(nums.begin(), nums.end());
+        
+        for (int i=1; i<nums.size(); i++)
+        {
+            if (nums[i] == nums[i-1])
             {
-                if (mp[nums[i]] >= 2)
-                {
-                    return true;
-                }
-                
+                return true;
             }
+        }
         return false;
     }
 };
