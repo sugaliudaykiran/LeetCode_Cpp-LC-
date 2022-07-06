@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int fib(int n) {
+    int fib(int n) {        //  TC -> O(n-1 + n-2).. SC -> O(n)..
         if (n == 1 || n == 0)
         {
              return n;
