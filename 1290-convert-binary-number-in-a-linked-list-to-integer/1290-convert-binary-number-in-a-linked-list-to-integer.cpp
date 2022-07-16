@@ -11,13 +11,14 @@
 class Solution {
 public:
     int getDecimalValue(ListNode* head) {
-        ListNode *temp = head;
+        ListNode *temp = head;      //  TC -> O(n).. SC -> O(1)..
         
-        int res = temp -> val;      //  Initially, store the head's val.. 
-        while (temp -> next != NULL)  //  Keep iterating .. and check temp's next node is 'NOT NULL'..
+        int res = temp -> val;  //  initialize, for head node's val..
+        
+        while (temp -> next != NULL)
         {
-            res = res * 2 + temp -> next -> val;   //   It not then, doing [res * 2 + X]
-            temp = temp -> next; // keep moving to next node..
+            res = res << 1 | temp -> next -> val;   //  do "left shift" and do "OR operation by the next node's val"..
+            temp = temp -> next;    //  move next node..
         }
         return res;
     }
