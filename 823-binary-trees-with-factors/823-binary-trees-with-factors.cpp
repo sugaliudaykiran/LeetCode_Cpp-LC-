@@ -16,7 +16,7 @@ public:
                 if (arr[i]%arr[j] == 0 && mp.find(arr[i]/arr[j]) != mp.end())
                 {
                     count = count + (mp[arr[j]] * mp[arr[i]/ arr[j]]);
-                    count  = count % MOD;
+                    // count  = count % MOD;
                 }
             }
             mp[arr[i]] = count;
