@@ -1,15 +1,32 @@
 class Solution {
 public:
-   int numFactoredBinaryTrees(vector<int>& A) {
-        long res = 0, mod = pow(10, 9) + 7;
-        sort(A.begin(), A.end());
-        unordered_map<int, long> dp;
-        for (int i = 0; i < A.size(); ++i) {
-            dp[A[i]] = 1;
-            for (int j = 0; j < i; ++j)
-                if (A[i] % A[j] == 0)
-                    dp[A[i]] = (dp[A[i]] + dp[A[j]] * dp[A[i] / A[j]]) % mod;
-            res = (res + dp[A[i]]) % mod;
+    int numFactoredBinaryTrees(vector<int>& arr) {
+        int MOD = pow(10, 9)+7;
+        int n = arr.size();
+                
+        sort(arr.begin(), arr.end());
+        unordered_map<int, long>mp;
+        
+        mp[arr[0]] = 1;
+        for (int i=1; i<n; i++)
+        {
+            long count = 1L;
+            for (int j=0; j<i; j++)
+            {
+                if (arr[i]%arr[j] == 0 && mp.find(arr[i]/arr[j]) != mp.end())
+                {
+                    count = count + (mp[arr[j]] * mp[arr[i]/ arr[j]]);
+                    count  = count % MOD;
+                }
+            }
+            mp[arr[i]] = count;
+        }
+        
+        int res = 0;
+        for (auto x: mp)
+        {
+            cout << x.first << " :" << x.second << "\n";
+            res =  (res + x.second) % MOD;
         }
         return res;
     }
