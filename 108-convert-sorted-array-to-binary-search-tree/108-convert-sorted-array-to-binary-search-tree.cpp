@@ -16,7 +16,7 @@ public:
         if (nums.size() == 0)
         {
             return NULL;
-        }
+        }// simple recursion with the indexes runs in O(n) time and O(logn) space.
         
         return binarySearchTree(nums, 0, nums.size()-1);
     }
@@ -37,6 +37,4 @@ public:
             root -> right = binarySearchTree(nums, mid+1, high);
         return root;
     }
-    
-    
 };
