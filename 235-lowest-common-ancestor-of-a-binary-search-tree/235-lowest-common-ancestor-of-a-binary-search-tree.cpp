@@ -11,29 +11,23 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (root == NULL)
+        if (root -> val > p -> val && root -> val > q -> val)     
         {
-            return NULL;
+            return lowestCommonAncestor(root->left, p, q); 
         }
-        
-        if (root -> val == p -> val || root -> val == q -> val )
+         
+        if (root -> val < p -> val && root -> val < q -> val)     
         {
-            return root;
+            return lowestCommonAncestor(root->right, p, q); 
         }
-        
-        TreeNode* LCA1 = lowestCommonAncestor(root -> left, p, q);
-        TreeNode* LCA2 = lowestCommonAncestor(root -> right, p, q);
-        if (LCA1 != NULL && LCA2 != NULL)
-        {
-            return root;
-        }
-        else if (LCA2 == NULL)
-        {
-            return LCA1;
-        }
-        else
-        {
-            return LCA2;
-        }
+        return root;
     }
 };
+
+/*
+    take advantage of the property of binary search trees, which is, 
+      node -> left -> val < node -> val < node -> right -> val. 
+      Moreover, both p and q will be the descendants of the root of the subtree 
+         that contains both of them.
+      And the root with the largest depth is just the lowest common ancestor.
+*/ 
