@@ -1,13 +1,12 @@
 LCA of Binary Tree (Part 1) :-
 Introduction to LCA (Lowest Common Ancestor) problem and a O(n) solution to the problem.
-Ex :-                    10
+Ex :-                  10
 /    \
 20     30
 /    \
 40    50
 /     /   \
 60   70     80
-​
 Were given, a binary tree and n1 = 60 and n2 = 70.. and we need to find the lowest common ancestor
 ancestor means for example..  60 has 60, 40, 30, 10..  70 has 70, 50, 30, 10.. are ancestor..
 common ancestor of 60 and 70 is 10, 30.. and we need to find the LCA then 30 is the LCA..
