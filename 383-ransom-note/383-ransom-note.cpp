@@ -14,9 +14,7 @@ public:
             {
                 return false;
             }
-            else{
                 freq[x - 'a']--;
-            }
         }
         return true;
     }
