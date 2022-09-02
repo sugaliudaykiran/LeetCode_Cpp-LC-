@@ -17,7 +17,7 @@ public:
         
         q.push(root);
         
-        while (q.empty() == false)
+        while (q.empty() == false) // TC -> O(n).. SC -> O(h)
         {
             long temp = 0;
             int s = q.size();
