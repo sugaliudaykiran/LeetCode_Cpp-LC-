@@ -14,8 +14,7 @@ public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector <int> res;
         
-        stack<TreeNode*> st;
-        // st.push(root);
+        stack<TreeNode*> st;// TC -> O(N).. SC -> O(N)..
         
         if (root == NULL)
         {
